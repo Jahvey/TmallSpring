@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tmall_spring.iml" filepath="$PROJECT_DIR$/.idea/modules/tmall_spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tmall_spring_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tmall_spring_main.iml" group="tmall_spring" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tmall_spring_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tmall_spring_test.iml" group="tmall_spring" />
+    </modules>
+  </component>
+</project>

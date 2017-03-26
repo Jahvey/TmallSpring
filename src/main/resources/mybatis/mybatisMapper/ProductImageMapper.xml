@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xyz.ivyxjc.mapper.ProductImageMapper">
+    
+    
+    <resultMap id="productImageMap" type="xyz.ivyxjc.bean.ProductImage">
+        <id property="id" column="id"/>
+        <result property="type" column="type"/>
+        
+        <association property="product" column="pid"
+                     select="xyz.ivyxjc.mapper.ProductMapper.get"/>
+    </resultMap>
+
+    
+    <select id="list" resultMap="productImageMap">
+        SELECT *
+        FROM product
+    </select>
+
+
+    <select id="getImagesBypid" resultMap="productImageMap">
+        SELECT *
+        FROM productimage
+        WHERE pid=#{id}
+    </select>
+    <select id="getSingleImagesBypid" resultMap="productImageMap">
+        SELECT *
+        FROM productimage
+        WHERE pid=#{id} AND type="type_single"
+    </select>
+    <select id="getDetailImagesBypid" resultMap="productImageMap">
+        SELECT *
+        FROM productimage
+        WHERE pid=#{id} AND type="type_detail"
+    </select>
+    <select id="getFirstImageBypid" resultType="xyz.ivyxjc.bean.ProductImage">
+        SELECT *
+        FROM productimage
+        WHERE pid=#{id} AND type="type_single"
+        LIMIT 0,1
+    </select>
+</mapper>

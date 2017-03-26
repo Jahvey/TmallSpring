@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+        ">
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/tmall_t?serverTimezone=UTC" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+		<!--<property name="dataSource" ref="dataSource"/>-->
+		<!--<property name="typeAliasesPackage" value="xyz.ivyxjc.bean"/>-->
+
+		<!--<property name="mapperLocations">-->
+			<!--<list>-->
+				<!--<value>classpath:mybatis/mybatisMapper/*.xml</value>-->
+			<!--</list>-->
+		<!--</property>-->
+		<!--<property name="configLocation" value="classpath:m_config.xml"/>-->
+
+	<!--</bean>-->
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="xyz.ivyxjc.mapper"/>
+		<!-- 3.2.2版本新特性，markerInterface可以起到mappers配置的作用，详细情况需要看Marker接口类 -->
+		<!-- <property name="markerInterface" value="com.isea533.mybatis.util.MyMapper"/>-->
+		<!-- 通用Mapper通过属性注入进行配置，默认不配置时会注册Mapper<T>接口 -->
+		<!--<property name="properties">
+            <value>
+                mappers=tk.mybatis.mapper.common.Mapper
+            </value>
+        </property>-->
+
+	</bean>
+
+	<!--<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"-->
+		<!--scope="prototype">-->
+		<!--<constructor-arg index="0" ref="sqlSessionFactory" />-->
+	<!--</bean>-->
+
+	<!--<bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+		<!--<property name="mapperInterface" value="xyz.ivyxjc.mapper.ProductMapper"/>-->
+		<!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+	<!--</bean>-->
+
+
+	<!--<bean id="categoryMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+		<!--<property name="mapperInterface" value="xyz.ivyxjc.mapper.CategoryMapper" />-->
+		<!--<property name="sqlSessionFactory" ref="sqlSessionFactory" />-->
+	<!--</bean>-->
+
+	<!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+		<!--<property name="basePackage" value="xyz.ivyxjc.mapper" />-->
+		<!--<property name="sqlSessionFactory" ref="sqlSessionFactory" />-->
+
+	<!--</bean>-->
+	<!--<aop:aspectj-autoproxy />-->
+
+	<!--<aop:config>-->
+		<!--<aop:pointcut id="appService"-->
+			<!--expression="execution(* com.github.ichenkaihua.service..*Service*.*(..))" />-->
+		<!--<aop:advisor advice-ref="txAdvice" pointcut-ref="appService" />-->
+	<!--</aop:config>-->
+
+	<!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+		<!--<tx:attributes>-->
+			<!--<tx:method name="select*" read-only="true" />-->
+			<!--<tx:method name="find*" read-only="true" />-->
+			<!--<tx:method name="get*" read-only="true" />-->
+			<!--<tx:method name="sava*" />-->
+
+		<!--</tx:attributes>-->
+	<!--</tx:advice>-->
+
+	<!--<bean id="transactionManager"-->
+		<!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+		<!--<property name="dataSource" ref="dataSource" />-->
+	<!--</bean>-->
+</beans>

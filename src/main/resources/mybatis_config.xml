@@ -1,0 +1,60 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <settings>
+        <!-- Globally enables or disables any caches configured in any mapper under this configuration -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- Sets the number of seconds the driver will wait for a response from the database -->
+        <setting name="defaultStatementTimeout" value="3000"/>
+        <!-- Enables automatic mapping from classic database column names A_COLUMN to camel case classic Java property names aColumn -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- Allows JDBC support for generated keys. A compatible driver is required.
+        This setting forces generated keys to be used if set to true,
+         as some drivers deny compatibility but still work -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <environments default = "development">
+        <environment id = "development">
+            <transactionManager type = "JDBC">
+                <property name="autoCommit" value="false"/>
+            </transactionManager>
+
+            <dataSource type = "POOLED">
+                <property name = "driver" value = "com.mysql.cj.jdbc.Driver"/>
+                <property name = "url" value = "jdbc:mysql://localhost:3306/tmall_t_fore?serverTimezone=UTC"/>
+                <property name = "username" value = "root"/>
+                <property name = "password" value = "123456"/>
+
+
+                <!--<property name = "driver" value = "${driver}"/>-->
+                <!--<property name = "url" value = "${url}"/>-->
+                <!--<property name = "username" value = "${username}"/>-->
+                <!--<property name = "password" value = "${password}"/>-->
+
+            </dataSource>
+
+        </environment>
+    </environments>
+
+
+
+    <mappers>
+        <mapper class="xyz.ivyxjc.mapper.CategoryMapper"/>
+        <mapper resource="mybatis/mybatisMapper/categoryMapper.xml"/>
+
+        <mapper class="xyz.ivyxjc.mapper.ProductMapper"/>
+        <mapper resource="mybatis/mybatisMapper/ProductMapper.xml"/>
+
+        <mapper class="xyz.ivyxjc.mapper.ProductImageMapper"/>
+        <mapper resource="mybatis/mybatisMapper/ProductImageMapper.xml"/>
+    </mappers>
+
+
+
+</configuration>

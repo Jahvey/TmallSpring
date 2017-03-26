@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xyz.ivyxjc.mapper.ProductMapper">
+
+    <resultMap id="productMap" type="xyz.ivyxjc.bean.Product">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="subTitle" column="subTitle"/>
+        <result property="originalPrice" column="originalPrice"/>
+        <result property="promotePrice" column="promotePrice"/>
+
+
+        <association property="firstProductImage" column="id"
+                     select="xyz.ivyxjc.mapper.ProductImageMapper.getFirstImageBypid"/>
+
+        <collection property="productImages" column="id"
+                    select="xyz.ivyxjc.mapper.ProductImageMapper.getImagesBypid"/>
+
+        <collection property="productSingleImages" column="id"
+                    select="xyz.ivyxjc.mapper.ProductImageMapper.getSingleImagesBypid"/>
+
+        <collection property="productDetailImages" column="id"
+                    select="xyz.ivyxjc.mapper.ProductImageMapper.getDetailImagesBypid"/>
+
+    </resultMap>
+
+
+    <select id="list" resultMap="productMap" parameterType="xyz.ivyxjc.utils.DataOffsetSetting">
+        SELECT *
+        FROM product
+        LIMIT #{start},#{count}
+    </select>
+
+    <select id="getTotal" resultMap="productMap">
+        SELECT count(*)
+        FROM product
+    </select>
+
+    <select id="listFrCategory" resultMap="productMap">
+        SELECT *
+        FROM product
+        WHERE cid=#{categoryId}
+    </select>
+
+    <select id="get" resultMap="productMap">
+        SELECT *
+        FROM product
+        WHERE cid=#{id}
+    </select>
+
+
+</mapper>

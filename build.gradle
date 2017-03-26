@@ -1,0 +1,59 @@
+group 'xyz.ivyxjc'
+version '1.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '3.1'
+  distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+}
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile "javax.servlet:javax.servlet-api:3.1.0"
+    compile "javax.servlet:jstl:1.2"
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.5'
+
+
+    compile "javax.validation:validation-api:1.1.0.Final"
+
+
+    compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.2-b02'
+
+    //slf4j
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
+
+//    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.1'
+//    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.1'
+
+
+    //apache commons
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.2'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.0'
+
+    //spring
+    compile "org.springframework:spring-test:4.3.5.RELEASE"
+    compile "org.springframework:spring-webmvc:4.3.5.RELEASE"
+    compile "org.springframework:spring-jdbc:4.3.5.RELEASE"
+    compile "org.thymeleaf:thymeleaf-spring4:3.0.3.RELEASE"
+
+
+    //mybatis
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.2'
+    compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.3.5'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.3.1'
+
+    compile 'org.apache.tomcat:tomcat-jdbc:8.0.33'
+
+}
