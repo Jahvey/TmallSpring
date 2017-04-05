@@ -21,8 +21,10 @@ dependencies {
 
     compile "javax.servlet:javax.servlet-api:3.1.0"
     compile "javax.servlet:jstl:1.2"
-    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.5'
+//    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.5'
 
+// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.41'
 
     compile "javax.validation:validation-api:1.1.0.Final"
 
@@ -47,6 +49,13 @@ dependencies {
     compile "org.springframework:spring-webmvc:4.3.5.RELEASE"
     compile "org.springframework:spring-jdbc:4.3.5.RELEASE"
     compile "org.thymeleaf:thymeleaf-spring4:3.0.3.RELEASE"
+    compile group: 'org.springframework', name: 'spring-aspects', version: '4.3.7.RELEASE'
+
+    //shiro
+    compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.3.2'
+    compile group: 'org.apache.shiro', name: 'shiro-core', version: '1.3.2'
+    compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.3.2'
+    compile group: 'org.apache.shiro', name: 'shiro-web', version: '1.3.2'
 
 
     //mybatis
@@ -55,5 +64,15 @@ dependencies {
     compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.3.1'
 
     compile 'org.apache.tomcat:tomcat-jdbc:8.0.33'
+
+
+    //swagger
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+    compile group: 'io.springfox', name: 'springfox-staticdocs', version: '2.6.1'
+
+// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.7'
+
 
 }

@@ -10,19 +10,5 @@ import java.util.List;
 
 
 public interface CategoryService extends BaseService<Category>{
-
-    @Override
-    List<Category> list(int start, int count);
-
-    @Override
-    Category get(int id);
-
-    @Override
-    void update(Category bean);
-
-    @Override
-    void add(Category bean);
-
-    @Override
-    void delete(int id);
+    void fillByRow(List<Category> cs);
 }

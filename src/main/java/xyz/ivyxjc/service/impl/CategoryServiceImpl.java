@@ -71,6 +71,7 @@ public class CategoryServiceImpl implements CategoryService {
         return mapper.getTotal();
     }
 
+    @Override
     public void fillByRow(List<Category> cs) {
         int productNumberEachRow = 8;
         for (Category c : cs) {

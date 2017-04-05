@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xyz.ivyxjc.mapper.UserMapper">
+    <resultMap id="userMap" type="xyz.ivyxjc.bean.User">
+        <id property="id" column="id"/>
+
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user
+        (name password)
+        VALUE (#{name},#{password})
+    </insert>
+
+    <update id="update">
+        UPDATE user
+        SET name=#{name},password=#{password}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM user
+        WHERE id=#{id}
+    </delete>
+
+    <select id="list" resultMap="userMap" parameterType="xyz.ivyxjc.utils.DataOffsetSetting">
+        SELECT *
+        FROM user
+        LIMIT #{start},#{count}
+    </select>
+
+    <select id="getTotal" resultMap="userMap">
+        SELECT count(*)
+        FROM user
+    </select>
+
+
+    <select id="get" resultMap="userMap">
+        SELECT *
+        FROM user
+        WHERE id=#{id}
+    </select>
+
+    <select id="getByname" resultMap="userMap" >
+        SELECT *
+        FROM  user
+        WHERE name=#{name}
+    </select>
+
+
+</mapper>

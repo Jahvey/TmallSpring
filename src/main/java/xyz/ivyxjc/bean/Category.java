@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by jc on 3/7/2017.
  */
-
+import com.mysql.jdbc.Driver;
 
 public class Category {
     private int id;

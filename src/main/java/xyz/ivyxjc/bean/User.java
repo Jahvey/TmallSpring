@@ -10,6 +10,16 @@ public class User {
     private String name;
     private String password;
 
+
+
+//    salt使用username比较不好, 真实情况下, 应该使用更为复杂的salt
+    public String getCredentialSalt() {
+        return name;
+    }
+
+
+
+
     public int getId() {
         return id;
     }

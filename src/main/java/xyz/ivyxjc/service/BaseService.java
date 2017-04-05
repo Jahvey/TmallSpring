@@ -1,5 +1,6 @@
 package xyz.ivyxjc.service;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import xyz.ivyxjc.bean.Category;
 
 import java.util.List;
@@ -8,10 +9,8 @@ import java.util.List;
  * Created by jc on 3/24/2017.
  */
 
-
 public interface BaseService<T> {
     List<T> list(int start, int count);
-
     default List<T> list(){
         return list(0,getTotal());
     }

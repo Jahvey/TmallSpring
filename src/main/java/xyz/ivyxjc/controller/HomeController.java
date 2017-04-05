@@ -11,6 +11,7 @@ import xyz.ivyxjc.bean.Product;
 import xyz.ivyxjc.service.CategoryService;
 import xyz.ivyxjc.service.ProductService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -30,11 +31,12 @@ public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(
+            HttpServletRequest request,
             Model model
     ){
         List<Category> cs=mCategoryService.list();
-
         model.addAttribute("cs",cs);
+        model.addAttribute("contextPath",request.getContextPath());
         return "front/home";
     }
 

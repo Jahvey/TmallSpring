@@ -1,5 +1,6 @@
 package xyz.ivyxjc.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import xyz.ivyxjc.bean.ProductImage;
 import xyz.ivyxjc.utils.DataOffsetSetting;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by jc on 3/24/2017.
  */
 
-
+@Mapper
 public interface ProductImageMapper extends BaseMapper<ProductImage> {
 
 
