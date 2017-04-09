@@ -45,17 +45,18 @@ public class UserRealm extends JdbcRealm {
             throw new UnknownAccountException("No account found for user [" + username + "]");
         }
 
+        System.out.println("----------------------------------------");
+        System.out.println(user.getName());
+        System.out.println(user.getPassword());
         SimpleAuthenticationInfo saInfo = new SimpleAuthenticationInfo(
                 username,
                 password,
                 ByteSource.Util.bytes(user.getCredentialSalt()),
                 getName());
 
-        saInfo.setCredentialsSalt(ByteSource.Util.bytes(username));
+//        saInfo.setCredentialsSalt(ByteSource.Util.bytes(username));
 
         info = saInfo;
-
-
 
         return info;
     }
